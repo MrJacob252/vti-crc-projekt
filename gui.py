@@ -78,20 +78,25 @@ class Application():
         '''
         mess = self.enc_mess_entry.get().strip()
         nk = self.nk_entry.get().strip()
-        k = nk.split(',')
-        k = k[1]
+
         
         # pokud jiz vystup encoderu existuje v slovniku widgetu, smaze se aby se nevytvoril duplikat
         if 'enc' in self.widgets:
             self.delete_enc_out()
         
-        # kontrola vyjimek
+        # kontrola jestli jsou zadane parametry
         if len(mess) == 0 or len(nk) == 0:
-            err = Error_popup('Not all encode parameters have been entered!')
+            err = Error_popup('Not all encoder parameters have been entered!')
             err.set_size(x=400)
             err.show()
             return
-        elif nk[0] == '(' or nk[-1] == ')':
+        
+        # zjisteni k ze zadaneho kodu
+        k = nk.split(',')
+        k = k[1]
+
+        # kontrola ostatnich vyjimek
+        if nk[0] == '(' or nk[-1] == ')':
             err = Error_popup('Enter nk code without brackets and spaces!\nEnter code in format: n,k')
             err.set_size(x=400, y=50)
             err.show()
@@ -105,6 +110,8 @@ class Application():
             err.set_size(x=350)
             err.show()
             return
+        
+
 
         # nalezeni polynomu a zakodovani dat polynomy
         data_in = clc.main_encode(mess, nk)
