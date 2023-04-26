@@ -1,20 +1,23 @@
 # vti-crc-projekt
-Python program for finding valid crc generating polynomials and encoding binary strings
+School project for Theory of Information (VTI):
 
-Dependencies zabaleny pomocí venv
+Simple program GUI program that can:
+    Find crc polynomials for given n, k code and encoding binary messages
+    Decode given binary messenge with given polynomial 
+    Repair flipped bits in a messages with given polynomial
 
-Aktivace venv skrze PowerShell:
+Packaged using venv
+
+Venv activation through PowerShell:
 ```
 ./Scripts/activate
 ```
 
-Python verze: 
+Python version: 
     3.11.0
 
-Použité knihovny:
+Used libraries:
     CustomTKinter 5.0.3
-
-Instalace knihoven:
 ```
 pip install customtkinter 
 ```
